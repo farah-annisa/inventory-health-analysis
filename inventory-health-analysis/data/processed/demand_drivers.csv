@@ -1,0 +1,125 @@
+driver_type,driver,driver_group,dept_id,days,avg_uplift
+Event,Chanukah End,Religious,HOBBIES_1,6,-0.076
+Event,Chanukah End,Religious,HOBBIES_2,6,0.256
+Event,Chanukah End,Religious,HOUSEHOLD_1,6,-0.125
+Event,Chanukah End,Religious,HOUSEHOLD_2,6,-0.075
+Event,Christmas,National,HOBBIES_1,6,-1.0
+Event,Christmas,National,HOBBIES_2,6,-1.0
+Event,Christmas,National,HOUSEHOLD_1,6,-1.0
+Event,Christmas,National,HOUSEHOLD_2,6,-1.0
+Event,Cinco De Mayo,Cultural,HOBBIES_1,6,0.048
+Event,Cinco De Mayo,Cultural,HOBBIES_2,6,0.431
+Event,Cinco De Mayo,Cultural,HOUSEHOLD_1,6,0.059
+Event,Cinco De Mayo,Cultural,HOUSEHOLD_2,6,0.148
+Event,ColumbusDay,National,HOBBIES_1,6,-0.052
+Event,ColumbusDay,National,HOBBIES_2,6,0.226
+Event,ColumbusDay,National,HOUSEHOLD_1,6,-0.039
+Event,ColumbusDay,National,HOUSEHOLD_2,6,-0.098
+Event,Easter,Cultural,HOBBIES_1,6,-0.117
+Event,Easter,Cultural,HOBBIES_2,6,-0.16
+Event,Easter,Cultural,HOUSEHOLD_1,6,-0.109
+Event,Easter,Cultural,HOUSEHOLD_2,6,0.025
+Event,Eid al-Fitr,Religious,HOBBIES_1,6,-0.035
+Event,Eid al-Fitr,Religious,HOBBIES_2,6,-0.373
+Event,Eid al-Fitr,Religious,HOUSEHOLD_1,6,-0.019
+Event,Eid al-Fitr,Religious,HOUSEHOLD_2,6,-0.059
+Event,EidAlAdha,Religious,HOBBIES_1,6,-0.036
+Event,EidAlAdha,Religious,HOBBIES_2,6,0.221
+Event,EidAlAdha,Religious,HOUSEHOLD_1,6,0.04
+Event,EidAlAdha,Religious,HOUSEHOLD_2,6,-0.053
+Event,Father's day,Cultural,HOBBIES_1,3,-0.027
+Event,Father's day,Cultural,HOBBIES_2,3,-0.141
+Event,Father's day,Cultural,HOUSEHOLD_1,3,-0.118
+Event,Father's day,Cultural,HOUSEHOLD_2,3,-0.036
+Event,Halloween,Cultural,HOBBIES_1,6,-0.071
+Event,Halloween,Cultural,HOBBIES_2,6,0.669
+Event,Halloween,Cultural,HOUSEHOLD_1,6,-0.082
+Event,Halloween,Cultural,HOUSEHOLD_2,6,-0.132
+Event,IndependenceDay,National,HOBBIES_1,6,-0.243
+Event,IndependenceDay,National,HOBBIES_2,6,-0.443
+Event,IndependenceDay,National,HOUSEHOLD_1,6,-0.21
+Event,IndependenceDay,National,HOUSEHOLD_2,6,-0.168
+Event,LaborDay,National,HOBBIES_1,6,0.071
+Event,LaborDay,National,HOBBIES_2,6,0.077
+Event,LaborDay,National,HOUSEHOLD_1,6,0.262
+Event,LaborDay,National,HOUSEHOLD_2,6,0.227
+Event,LentStart,Religious,HOBBIES_1,6,0.035
+Event,LentStart,Religious,HOBBIES_2,6,-0.065
+Event,LentStart,Religious,HOUSEHOLD_1,6,0.12
+Event,LentStart,Religious,HOUSEHOLD_2,6,0.111
+Event,LentWeek2,Religious,HOBBIES_1,6,0.031
+Event,LentWeek2,Religious,HOBBIES_2,6,-0.142
+Event,LentWeek2,Religious,HOUSEHOLD_1,6,0.133
+Event,LentWeek2,Religious,HOUSEHOLD_2,6,0.076
+Event,MartinLutherKingDay,National,HOBBIES_1,6,-0.043
+Event,MartinLutherKingDay,National,HOBBIES_2,6,-0.039
+Event,MartinLutherKingDay,National,HOUSEHOLD_1,6,0.018
+Event,MartinLutherKingDay,National,HOUSEHOLD_2,6,0.045
+Event,MemorialDay,National,HOBBIES_1,6,-0.003
+Event,MemorialDay,National,HOBBIES_2,6,-0.15
+Event,MemorialDay,National,HOUSEHOLD_1,6,-0.01
+Event,MemorialDay,National,HOUSEHOLD_2,6,0.089
+Event,Mother's day,Cultural,HOBBIES_1,6,-0.05
+Event,Mother's day,Cultural,HOBBIES_2,6,-0.027
+Event,Mother's day,Cultural,HOUSEHOLD_1,6,-0.199
+Event,Mother's day,Cultural,HOUSEHOLD_2,6,-0.02
+Event,NBAFinalsEnd,Sporting,HOBBIES_1,6,-0.126
+Event,NBAFinalsEnd,Sporting,HOBBIES_2,6,-0.381
+Event,NBAFinalsEnd,Sporting,HOUSEHOLD_1,6,-0.173
+Event,NBAFinalsEnd,Sporting,HOUSEHOLD_2,6,-0.132
+Event,NBAFinalsStart,Sporting,HOBBIES_1,6,0.042
+Event,NBAFinalsStart,Sporting,HOBBIES_2,6,-0.253
+Event,NBAFinalsStart,Sporting,HOUSEHOLD_1,6,0.031
+Event,NBAFinalsStart,Sporting,HOUSEHOLD_2,6,0.05
+Event,NewYear,National,HOBBIES_1,6,-0.148
+Event,NewYear,National,HOBBIES_2,6,-0.451
+Event,NewYear,National,HOUSEHOLD_1,6,-0.111
+Event,NewYear,National,HOUSEHOLD_2,6,-0.184
+Event,OrthodoxChristmas,Religious,HOBBIES_1,6,-0.086
+Event,OrthodoxChristmas,Religious,HOBBIES_2,6,-0.373
+Event,OrthodoxChristmas,Religious,HOUSEHOLD_1,6,-0.123
+Event,OrthodoxChristmas,Religious,HOUSEHOLD_2,6,-0.141
+Event,OrthodoxEaster,Religious,HOBBIES_1,6,0.104
+Event,OrthodoxEaster,Religious,HOBBIES_2,6,0.029
+Event,OrthodoxEaster,Religious,HOUSEHOLD_1,6,0.118
+Event,OrthodoxEaster,Religious,HOUSEHOLD_2,6,0.15
+Event,Pesach End,Religious,HOBBIES_1,6,0.106
+Event,Pesach End,Religious,HOBBIES_2,6,0.229
+Event,Pesach End,Religious,HOUSEHOLD_1,6,0.095
+Event,Pesach End,Religious,HOUSEHOLD_2,6,0.114
+Event,PresidentsDay,National,HOBBIES_1,6,0.084
+Event,PresidentsDay,National,HOBBIES_2,6,-0.116
+Event,PresidentsDay,National,HOUSEHOLD_1,6,0.216
+Event,PresidentsDay,National,HOUSEHOLD_2,6,0.165
+Event,Purim End,Religious,HOBBIES_1,6,0.036
+Event,Purim End,Religious,HOBBIES_2,6,0.025
+Event,Purim End,Religious,HOUSEHOLD_1,6,-0.051
+Event,Purim End,Religious,HOUSEHOLD_2,6,0.023
+Event,Ramadan starts,Religious,HOBBIES_1,6,-0.005
+Event,Ramadan starts,Religious,HOBBIES_2,6,-0.314
+Event,Ramadan starts,Religious,HOUSEHOLD_1,6,-0.066
+Event,Ramadan starts,Religious,HOUSEHOLD_2,6,0.022
+Event,StPatricksDay,Cultural,HOBBIES_1,6,-0.042
+Event,StPatricksDay,Cultural,HOBBIES_2,6,0.031
+Event,StPatricksDay,Cultural,HOUSEHOLD_1,6,0.032
+Event,StPatricksDay,Cultural,HOUSEHOLD_2,6,0.009
+Event,SuperBowl,Sporting,HOBBIES_1,6,-0.097
+Event,SuperBowl,Sporting,HOBBIES_2,6,-0.066
+Event,SuperBowl,Sporting,HOUSEHOLD_1,6,-0.092
+Event,SuperBowl,Sporting,HOUSEHOLD_2,6,-0.19
+Event,Thanksgiving,National,HOBBIES_1,6,-0.52
+Event,Thanksgiving,National,HOBBIES_2,6,-0.43
+Event,Thanksgiving,National,HOUSEHOLD_1,6,-0.398
+Event,Thanksgiving,National,HOUSEHOLD_2,6,-0.435
+Event,ValentinesDay,Cultural,HOBBIES_1,6,-0.018
+Event,ValentinesDay,Cultural,HOBBIES_2,6,-0.225
+Event,ValentinesDay,Cultural,HOUSEHOLD_1,6,-0.042
+Event,ValentinesDay,Cultural,HOUSEHOLD_2,6,0.01
+Event,VeteransDay,National,HOBBIES_1,6,-0.011
+Event,VeteransDay,National,HOBBIES_2,6,0.284
+Event,VeteransDay,National,HOUSEHOLD_1,6,-0.08
+Event,VeteransDay,National,HOUSEHOLD_2,6,-0.13
+SNAP payment day,SNAP day,Benefit payment,HOBBIES_1,661,0.026
+SNAP payment day,SNAP day,Benefit payment,HOBBIES_2,661,-0.004
+SNAP payment day,SNAP day,Benefit payment,HOUSEHOLD_1,661,0.04
+SNAP payment day,SNAP day,Benefit payment,HOUSEHOLD_2,661,0.019

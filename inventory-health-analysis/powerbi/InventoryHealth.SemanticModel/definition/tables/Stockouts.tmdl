@@ -1,0 +1,169 @@
+/// Every likely stockout of the last 52 weeks
+table Stockouts
+	lineageTag: fb5521c4-3c71-5854-9f30-e604b53b2e0c
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 98f7ff27-fb15-59c5-9161-718322cecfd8
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_id
+		dataType: string
+		isHidden
+		lineageTag: 741b8a45-2b88-50a6-95ad-2b9280a08088
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_id
+		dataType: string
+		isHidden
+		lineageTag: 583f0b68-41aa-5115-a147-75a8b375e822
+		summarizeBy: none
+		sourceColumn: cat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_id
+		dataType: string
+		isHidden
+		lineageTag: d1813ea8-9638-5628-97f1-90fcaa82eb58
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 50512bac-eff7-5533-8d7a-831588b69c9a
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column abc
+		dataType: string
+		isHidden
+		lineageTag: bdf593d5-93e5-5e63-ae5a-56c07a9c5490
+		summarizeBy: none
+		sourceColumn: abc
+
+		annotation SummarizationSetBy = Automatic
+
+	column xyz
+		dataType: string
+		isHidden
+		lineageTag: d2239be5-784d-5e97-a241-ff29c28a6622
+		summarizeBy: none
+		sourceColumn: xyz
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		isHidden
+		lineageTag: 3864363a-632c-5332-8aab-dec063b2c742
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gap start'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 6b704791-f19c-5061-a7c7-ef8c07df8234
+		summarizeBy: none
+		sourceColumn: run_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Gap end'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: df1796c2-7824-53ed-87df-a102cf02e2c7
+		summarizeBy: none
+		sourceColumn: run_end
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days out'
+		dataType: int64
+		formatString: #,0
+		lineageTag: d72ebee9-c740-5a4c-baf0-3698b0d0fd36
+		summarizeBy: none
+		sourceColumn: run_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Normal daily units'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: bdab19e0-2f3c-538a-b4a8-a2c90e04d9e0
+		summarizeBy: none
+		sourceColumn: baseline_daily_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est lost units'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: fe0eb64a-85ba-5f53-9a3a-4592ee0c84e8
+		summarizeBy: none
+		sourceColumn: est_lost_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est lost revenue'
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 3f7476be-f718-536c-8e22-43fc8f75e2aa
+		summarizeBy: none
+		sourceColumn: est_lost_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stores out together'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fdcce73-ae9f-5dfc-b8f0-b83a10593a22
+		summarizeBy: none
+		sourceColumn: stores_out_together
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Network gap'
+		dataType: boolean
+		lineageTag: 4bd12d86-526d-5dcb-8e9e-1688e548bc2a
+		summarizeBy: none
+		sourceColumn: network_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Still open'
+		dataType: boolean
+		lineageTag: 8fbc4db6-7cd1-5c5a-8ff1-45d5010de089
+		summarizeBy: none
+		sourceColumn: ongoing_at_data_end
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Stockouts = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dash_stockouts_52w.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"store_id", type text}, {"state_id", type text}, {"cat_id", type text}, {"dept_id", type text}, {"item_id", type text}, {"abc", type text}, {"xyz", type text}, {"segment", type text}, {"run_start", type date}, {"run_end", type date}, {"run_days", Int64.Type}, {"baseline_daily_units", type number}, {"est_lost_units", type number}, {"est_lost_revenue", type number}, {"stores_out_together", Int64.Type}, {"network_gap", type logical}, {"ongoing_at_data_end", type logical}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

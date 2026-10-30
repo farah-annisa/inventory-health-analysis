@@ -1,0 +1,275 @@
+/// One row per item and store: segment, status, stockouts, lost sales, reorder points
+table 'Item Store'
+	lineageTag: bcab5812-397b-59b6-821e-ae59f44e0347
+
+	column Item
+		dataType: string
+		lineageTag: 75590c48-e36a-5ffc-b301-272cb14d356c
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_id
+		dataType: string
+		isHidden
+		lineageTag: 199ff1c4-9c98-5e17-a423-d21189f15bd6
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_id
+		dataType: string
+		isHidden
+		lineageTag: ce76de66-d668-5a3b-8d83-f12da672175b
+		summarizeBy: none
+		sourceColumn: cat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 57ad88b6-b529-517f-b466-77753651af9f
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_id
+		dataType: string
+		isHidden
+		lineageTag: 5b4e14bb-a352-56f3-962f-e3e86c12a9b0
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column abc
+		dataType: string
+		isHidden
+		lineageTag: d770c4aa-af02-5801-b71c-4963d86a032e
+		summarizeBy: none
+		sourceColumn: abc
+
+		annotation SummarizationSetBy = Automatic
+
+	column xyz
+		dataType: string
+		isHidden
+		lineageTag: c4466347-2b7b-5af0-8010-d4acd8b8d8a6
+		summarizeBy: none
+		sourceColumn: xyz
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		isHidden
+		lineageTag: e1efad64-81cc-54be-a106-07be04bf5fa8
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revenue 52w'
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: dcc286f0-75ed-5825-8398-e6c984cf40c8
+		summarizeBy: none
+		sourceColumn: revenue_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Units 52w'
+		dataType: double
+		formatString: #,0
+		lineageTag: 85196880-b0d7-5e96-93d1-34b9c58ce289
+		summarizeBy: none
+		sourceColumn: units_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg weekly units'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 36acc76a-9ebd-512e-9779-1365b5264ba1
+		summarizeBy: none
+		sourceColumn: avg_weekly_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CV weekly units'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2df6be6c-0dee-55a1-9c8c-a6017bfd6653
+		summarizeBy: none
+		sourceColumn: cv_weekly_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stock status'
+		dataType: string
+		lineageTag: 602693f3-2602-5caf-8fac-f90afcbd3b7f
+		summarizeBy: none
+		sourceColumn: stock_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Units 13w'
+		dataType: double
+		formatString: #,0
+		lineageTag: 53f3ff9a-0fd8-54c4-8020-608955d31204
+		summarizeBy: none
+		sourceColumn: units_13w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last sale date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 98c7b674-f407-5a94-b4e5-39768edae0f1
+		summarizeBy: none
+		sourceColumn: last_sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days since last sale'
+		dataType: double
+		formatString: #,0
+		lineageTag: 8a0ddd9d-4042-5cdd-9c77-7cccf0113729
+		summarizeBy: none
+		sourceColumn: days_since_last_sale
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shelf price'
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 263b8b7c-dbac-58b5-bd36-9f1cc29c6cc6
+		summarizeBy: none
+		sourceColumn: current_price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stockouts 52w'
+		dataType: double
+		formatString: #,0
+		lineageTag: 9cdb18ca-f96e-5d59-8df0-0ab2cca37625
+		summarizeBy: none
+		sourceColumn: stockouts_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stockout days 52w'
+		dataType: double
+		formatString: #,0
+		lineageTag: 8190d911-bbc2-5c79-ad01-a0ade16e3e17
+		summarizeBy: none
+		sourceColumn: stockout_days_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lost units 52w'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: b7604277-ce83-57c3-a88c-ae8b6d06cd86
+		summarizeBy: none
+		sourceColumn: lost_units_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lost revenue 52w'
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 1b1249f7-e5a1-52df-b62a-35ca676dd636
+		summarizeBy: none
+		sourceColumn: lost_revenue_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Network stockouts 52w'
+		dataType: double
+		formatString: #,0
+		lineageTag: f41bb6c1-b0b3-5909-9cea-3870d0df6990
+		summarizeBy: none
+		sourceColumn: network_stockouts_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Network lost revenue 52w'
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 7ea790ef-3231-5a9e-bac4-91486a4f54ea
+		summarizeBy: none
+		sourceColumn: network_lost_revenue_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Out of stock now'
+		dataType: boolean
+		lineageTag: 1445e2bc-2e69-5ea3-b2f4-b727bdca9932
+		summarizeBy: none
+		sourceColumn: out_of_stock_now
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg daily demand'
+		dataType: double
+		formatString: #,0.000
+		lineageTag: 80e0ed74-be93-57ad-b775-8a7405637891
+		summarizeBy: none
+		sourceColumn: avg_daily_demand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SD daily demand'
+		dataType: double
+		formatString: #,0.000
+		lineageTag: eaa18397-966c-5f62-ace3-a589f2a3d4d2
+		summarizeBy: none
+		sourceColumn: sd_daily_demand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reorder point 3d'
+		dataType: double
+		formatString: #,0
+		lineageTag: 0cd9d000-1951-5f09-b2fd-79f1caa792ca
+		summarizeBy: none
+		sourceColumn: reorder_point_3d
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reorder point 7d'
+		dataType: double
+		formatString: #,0
+		lineageTag: c54ca8f9-303e-5ef1-8624-5f6fd3f885ff
+		summarizeBy: none
+		sourceColumn: reorder_point_7d
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reorder point 14d'
+		dataType: double
+		formatString: #,0
+		lineageTag: 8adedf41-2839-5f31-8223-6dd9eaafd538
+		summarizeBy: none
+		sourceColumn: reorder_point_14d
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Item Store' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dash_item_store_summary.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"item_id", type text}, {"dept_id", type text}, {"cat_id", type text}, {"store_id", type text}, {"state_id", type text}, {"abc", type text}, {"xyz", type text}, {"segment", type text}, {"revenue_52w", type number}, {"units_52w", type number}, {"avg_weekly_units", type number}, {"cv_weekly_units", type number}, {"stock_status", type text}, {"units_13w", type number}, {"last_sale_date", type date}, {"days_since_last_sale", type number}, {"current_price", type number}, {"stockouts_52w", type number}, {"stockout_days_52w", type number}, {"lost_units_52w", type number}, {"lost_revenue_52w", type number}, {"network_stockouts_52w", type number}, {"network_lost_revenue_52w", type number}, {"out_of_stock_now", type logical}, {"avg_daily_demand", type number}, {"sd_daily_demand", type number}, {"reorder_point_3d", type number}, {"reorder_point_7d", type number}, {"reorder_point_14d", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

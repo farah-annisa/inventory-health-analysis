@@ -1,0 +1,32 @@
+/// One row per store
+table Store
+	lineageTag: fe2c3323-70b8-5503-a212-ad877ab14bd1
+
+	column Store
+		dataType: string
+		isKey
+		lineageTag: 30755dc9-1a15-5fb2-9d75-3b9fb6041984
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 55e13128-718a-513b-a3e4-61497fb4020c
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Store = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dim_store.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"store_id", type text}, {"state_id", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

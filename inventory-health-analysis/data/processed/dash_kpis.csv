@@ -1,0 +1,2 @@
+revenue_52w,units_52w,item_stores,pct_revenue_from_a,a_item_stores,stockout_runs_52w,item_stores_with_stockouts,est_lost_units_52w,est_lost_revenue_52w,lost_revenue_pct_of_sales,network_gap_runs,pct_lost_revenue_network_gaps,out_of_stock_now,dead_item_stores,slow_item_stores,delisted_item_stores,reorder_points_set
+19929074.0,4957515.0,16120,80.0,6168,6642,2799,142776.0,359976.0,1.81,1887,33.5,47,27,305,0,6168

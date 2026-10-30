@@ -1,0 +1,72 @@
+// Measures in the 'Key Measures' table of InventoryHealth.SemanticModel
+
+// Revenue over the last 52 full weeks  ·  format: $#,0
+[Revenue (52w)] =
+    SUM ( 'Item Store'[Revenue 52w] )
+
+// Number of item-store combinations  ·  format: #,0
+[Item-store lines] =
+    COUNTROWS ( 'Item Store' )
+
+// Share of revenue, ignoring the segment filter  ·  format: 0.0%
+[Revenue share] =
+    DIVIDE ( [Revenue (52w)], CALCULATE ( [Revenue (52w)], ALL ( Segment ) ) )
+
+// Listed lines with no sales in 26 weeks  ·  format: #,0
+[Dead lines] =
+    CALCULATE ( [Item-store lines], 'Item Store'[Stock status] = "Dead: no sales in 26 weeks" ) + 0
+
+// Listed lines with 2 or fewer units in 13 weeks  ·  format: #,0
+[Slow lines] =
+    CALCULATE ( [Item-store lines], 'Item Store'[Stock status] = "Slow: 2 or fewer units in 13 weeks" ) + 0
+
+// Zero-sale runs under a 1-in-100,000 chance while in stock  ·  format: #,0
+[Likely stockouts] =
+    COUNTROWS ( Stockouts ) + 0
+
+// Normal daily units x days out x shelf price  ·  format: $#,0
+[Lost revenue (est.)] =
+    SUM ( Stockouts[Est lost revenue] ) + 0
+
+// Normal daily units x days out  ·  format: #,0
+[Lost units (est.)] =
+    SUM ( Stockouts[Est lost units] ) + 0
+
+// Estimated lost revenue as a share of revenue  ·  format: 0.00%
+[Lost revenue %] =
+    DIVIDE ( [Lost revenue (est.)], [Revenue (52w)] )
+
+// Share of lost revenue from gaps that hit 3+ stores at once  ·  format: 0.0%
+[Network gap share] =
+    DIVIDE ( CALCULATE ( [Lost revenue (est.)], Stockouts[Network gap] = TRUE () ), [Lost revenue (est.)] )
+
+// Gaps still open on the last day of data  ·  format: #,0
+[Out of stock now] =
+    CALCULATE ( [Likely stockouts], Stockouts[Still open] = TRUE () )
+
+// Average length of a likely stockout  ·  format: 0.0
+[Avg days out] =
+    AVERAGE ( Stockouts[Days out] )
+
+// Revenue from the weekly sales table  ·  format: $#,0
+[Weekly revenue] =
+    SUM ( 'Weekly Sales'[Revenue] )
+
+// Last 364 days versus the 364 days before  ·  format: +0.0%;-0.0%;0.0%
+[Revenue growth vs prior year] =
+    VAR LastDay = MAX ( 'Date'[Date] )
+    VAR Last52 = CALCULATE ( [Weekly revenue], DATESINPERIOD ( 'Date'[Date], LastDay, -364, DAY ) )
+    VAR Prior52 = CALCULATE ( [Weekly revenue], DATESINPERIOD ( 'Date'[Date], LastDay - 364, -364, DAY ) )
+    RETURN DIVIDE ( Last52 - Prior52, Prior52 )
+
+// Sum of safety stock for the selected lead time  ·  format: #,0.0
+[Safety stock (units)] =
+    SUM ( 'Reorder Points'[Safety stock (units)] )
+
+// Sum of reorder points for the selected lead time  ·  format: #,0
+[Reorder point (units)] =
+    SUM ( 'Reorder Points'[Reorder point (units)] )
+
+// Average uplift versus a normal same weekday  ·  format: +0%;-0%;0%
+[Avg uplift] =
+    AVERAGE ( 'Demand Drivers'[Avg uplift] )

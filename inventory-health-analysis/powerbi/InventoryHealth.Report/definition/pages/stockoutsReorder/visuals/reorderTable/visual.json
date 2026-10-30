@@ -1,0 +1,162 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "reorderTable",
+  "position": {
+    "x": 24,
+    "y": 426,
+    "z": 3000,
+    "width": 820,
+    "height": 274,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Store"
+                    }
+                  },
+                  "Property": "Store"
+                }
+              },
+              "queryRef": "Store.Store",
+              "nativeQueryRef": "Store"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reorder Points"
+                    }
+                  },
+                  "Property": "Item"
+                }
+              },
+              "queryRef": "Reorder Points.Item",
+              "nativeQueryRef": "Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Segment"
+                    }
+                  },
+                  "Property": "Segment"
+                }
+              },
+              "queryRef": "Segment.Segment",
+              "nativeQueryRef": "Segment"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reorder Points"
+                    }
+                  },
+                  "Property": "Lead time (days)"
+                }
+              },
+              "queryRef": "Reorder Points.Lead time (days)",
+              "nativeQueryRef": "Lead time (days)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reorder Points"
+                    }
+                  },
+                  "Property": "Avg daily demand"
+                }
+              },
+              "queryRef": "Reorder Points.Avg daily demand",
+              "nativeQueryRef": "Avg daily demand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reorder Points"
+                    }
+                  },
+                  "Property": "Safety stock (units)"
+                }
+              },
+              "queryRef": "Reorder Points.Safety stock (units)",
+              "nativeQueryRef": "Safety stock (units)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reorder Points"
+                    }
+                  },
+                  "Property": "Reorder point (units)"
+                }
+              },
+              "queryRef": "Reorder Points.Reorder point (units)",
+              "nativeQueryRef": "Reorder point (units)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Reorder Points"
+                  }
+                },
+                "Property": "Reorder point (units)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reorder points for A-items (95% service level)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

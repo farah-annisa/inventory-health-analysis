@@ -1,0 +1,10 @@
+abc,xyz,segment,item_stores,revenue_52w,pct_of_revenue,planning_rule
+A,X,AX,2857,9916134.66,49.8,Automate replenishment; tight safety stock; review weekly
+A,Y,AY,2913,5311232.91,26.7,Safety stock sized to variability; review weekly
+A,Z,AZ,398,721791.96,3.6,Plan with buyers; check daily for stockouts
+B,X,BX,452,363588.51,1.8,Automate replenishment; standard safety stock
+B,Y,BY,3129,1937402.84,9.7,Review every two weeks
+B,Z,BZ,1310,683723.89,3.4,Order against demand signals; avoid overstock
+C,X,CX,26,10878.94,0.1,Bulk orders; review monthly
+C,Y,CY,1315,362495.19,1.8,Keep minimal stock; review monthly
+C,Z,CZ,3720,621825.23,3.1,Candidate for delisting or order-on-demand

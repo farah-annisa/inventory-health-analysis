@@ -1,0 +1,91 @@
+/// Weekly units and revenue by store and department (full weeks)
+table 'Weekly Sales'
+	lineageTag: 4a8845a3-27d0-5074-a3e3-39eaeb66c3d2
+
+	column week_start
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: b3d05d4e-67f8-5ecb-b522-e201773cdd3c
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column wm_yr_wk
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6ad55a2d-2bb6-5f23-86ee-2fb7bedd874d
+		summarizeBy: none
+		sourceColumn: wm_yr_wk
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 476de12d-fb8e-5f7b-8eb4-e0b6f6368667
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_id
+		dataType: string
+		isHidden
+		lineageTag: 12a17944-260f-5547-9765-59d975047a48
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_id
+		dataType: string
+		isHidden
+		lineageTag: d5d1b6c3-f7ba-53d5-a187-4cd03df1a425
+		summarizeBy: none
+		sourceColumn: cat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_id
+		dataType: string
+		isHidden
+		lineageTag: c2710e96-781c-5875-8593-8ee19ffd5bb0
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Units
+		dataType: double
+		formatString: #,0
+		lineageTag: b264d988-f63e-567d-b679-09342ab817b5
+		summarizeBy: none
+		sourceColumn: units
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue
+		dataType: double
+		formatString: \$#,0
+		lineageTag: 3456bd7a-3edd-58b9-834e-8d965136fffb
+		summarizeBy: none
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Weekly Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dash_weekly_sales.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"week_start", type date}, {"wm_yr_wk", Int64.Type}, {"store_id", type text}, {"state_id", type text}, {"cat_id", type text}, {"dept_id", type text}, {"units", type number}, {"revenue", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

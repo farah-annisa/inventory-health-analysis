@@ -1,0 +1,34 @@
+/// One row per department (built from the item list in Power Query)
+table Department
+	lineageTag: e05b8ca7-1a24-568a-bac4-6b9d176cdeb7
+
+	column Department
+		dataType: string
+		isKey
+		lineageTag: 02811ec9-7a7e-5cb4-86a8-b24136450279
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 0ccac525-a112-571b-8a21-e8a9190b5ce1
+		summarizeBy: none
+		sourceColumn: cat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Department = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dim_item.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Selected = Table.SelectColumns(Promoted, {"item_id", "dept_id", "cat_id"}),
+				    Typed = Table.TransformColumnTypes(Selected, {{"item_id", type text}, {"dept_id", type text}, {"cat_id", type text}}, "en-US"),
+				    Departments = Table.Distinct(Table.SelectColumns(Typed, {"dept_id", "cat_id"}))
+				in
+				    Departments
+
+	annotation PBI_ResultType = Table

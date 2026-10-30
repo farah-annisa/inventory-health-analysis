@@ -1,0 +1,90 @@
+/// Calendar, 24 May 2014 to 22 May 2016
+table Date
+	lineageTag: 103d0107-07d6-5e18-972c-4a4c38d2e16e
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: cb4aa460-ce4e-5af0-8403-8b0377924293
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Walmart week'
+		dataType: int64
+		formatString: 0
+		lineageTag: dbfc19ae-65f0-55ca-80f9-b64eadc296d2
+		summarizeBy: none
+		sourceColumn: wm_yr_wk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: string
+		lineageTag: e285d465-0564-5b0f-8ca6-d57f396429a6
+		summarizeBy: none
+		sourceColumn: weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: f2b2c07d-291d-541f-a41a-20e95e9df02c
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 415ee29a-b480-561e-a8b4-3227e948d8bd
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Event
+		dataType: string
+		lineageTag: 1ab6004e-7f57-55f5-93ac-92dd862ad78f
+		summarizeBy: none
+		sourceColumn: event_name_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Event type'
+		dataType: string
+		lineageTag: 9d026cce-011d-5edb-bebd-3b237e093943
+		summarizeBy: none
+		sourceColumn: event_type_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week start'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 12e395fb-e482-5140-b767-459bd8948ec4
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\dim_date.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"date", type date}, {"wm_yr_wk", Int64.Type}, {"weekday", type text}, {"month", Int64.Type}, {"year", Int64.Type}, {"event_name_1", type text}, {"event_type_1", type text}, {"week_start", type date}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

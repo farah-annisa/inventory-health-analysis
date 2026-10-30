@@ -1,0 +1,48 @@
+/// The nine ABC-XYZ segments with their planning rule
+table Segment
+	lineageTag: 111702b6-9551-5675-8998-272cfa0970b3
+
+	column Segment
+		dataType: string
+		isKey
+		lineageTag: 61a20cc1-5c28-5fe2-b653-4a3d6e413cdf
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABC
+		dataType: string
+		lineageTag: d7ea5b37-17b5-5d92-8b07-8de1e16e109a
+		summarizeBy: none
+		sourceColumn: abc
+
+		annotation SummarizationSetBy = Automatic
+
+	column XYZ
+		dataType: string
+		lineageTag: 9fb64eaf-8611-531f-a5d9-2ff60f684193
+		summarizeBy: none
+		sourceColumn: xyz
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planning rule'
+		dataType: string
+		lineageTag: 457cf8cc-c0b3-51df-835c-765d6a6f1ed9
+		summarizeBy: none
+		sourceColumn: planning_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Segment = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\abc_xyz_matrix.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"segment", type text}, {"abc", type text}, {"xyz", type text}, {"planning_rule", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

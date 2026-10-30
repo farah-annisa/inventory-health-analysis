@@ -1,0 +1,132 @@
+/// Safety stock and reorder point for every A-item and store at 3, 7 and 14-day lead times
+table 'Reorder Points'
+	lineageTag: e63b36da-a6d7-53e4-b628-a718d07ac1b2
+
+	column Item
+		dataType: string
+		lineageTag: 39bfde70-a867-5439-ab57-a200f50b3107
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_id
+		dataType: string
+		isHidden
+		lineageTag: 4bb15c5e-ca35-523d-888c-b56db2433059
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cat_id
+		dataType: string
+		isHidden
+		lineageTag: f3bc2d23-554f-5048-b314-c4e861a5348a
+		summarizeBy: none
+		sourceColumn: cat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: string
+		isHidden
+		lineageTag: 2347b080-b944-58d4-bbcb-2d1fc7e6bd40
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_id
+		dataType: string
+		isHidden
+		lineageTag: 03302b8d-7230-5963-bd20-7f41602445b2
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column abc
+		dataType: string
+		isHidden
+		lineageTag: 7c104dd6-486b-58c6-8db0-a6eb4baa2c16
+		summarizeBy: none
+		sourceColumn: abc
+
+		annotation SummarizationSetBy = Automatic
+
+	column xyz
+		dataType: string
+		isHidden
+		lineageTag: ceb91904-378e-5d5d-ac05-0901b36267b5
+		summarizeBy: none
+		sourceColumn: xyz
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lead time (days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c7e24c57-405b-51d0-b2ac-8b50e84ff045
+		summarizeBy: none
+		sourceColumn: lead_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg daily demand'
+		dataType: double
+		formatString: #,0.000
+		lineageTag: 17fda4c1-9012-5334-a9ae-1c431d4cfe50
+		summarizeBy: none
+		sourceColumn: avg_daily_demand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SD daily demand'
+		dataType: double
+		formatString: #,0.000
+		lineageTag: 1b08a3a8-b907-5450-8ad4-e6baa385425e
+		summarizeBy: none
+		sourceColumn: sd_daily_demand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Safety stock (units)'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 82b42879-3c56-5da7-b1a2-e70fd874c1a1
+		summarizeBy: none
+		sourceColumn: safety_stock_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reorder point (units)'
+		dataType: double
+		formatString: #,0
+		lineageTag: 92e1d860-a1be-5fc5-98f2-c72aa8524faf
+		summarizeBy: none
+		sourceColumn: reorder_point_units
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		isHidden
+		lineageTag: d7aa0439-53d9-5810-941e-a28096aa63af
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Reorder Points' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\reorder_points.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"item_id", type text}, {"dept_id", type text}, {"cat_id", type text}, {"store_id", type text}, {"state_id", type text}, {"abc", type text}, {"xyz", type text}, {"lead_time_days", Int64.Type}, {"avg_daily_demand", type number}, {"sd_daily_demand", type number}, {"safety_stock_units", type number}, {"reorder_point_units", type number}}, "en-US"),
+				    WithSegment = Table.AddColumn(Typed, "segment", each [abc] & [xyz], type text)
+				in
+				    WithSegment
+
+	annotation PBI_ResultType = Table

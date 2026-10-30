@@ -1,0 +1,21 @@
+# Raw M5 data stays out of the repo (Kaggle competition rules)
+data/raw/
+*.zip
+
+# Local database (rebuilt by notebook 01)
+data/*.duckdb
+data/*.duckdb.wal
+
+# Power BI local files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Credentials
+kaggle.json
+.env
+
+# Python and notebook clutter
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+~$*.xlsx

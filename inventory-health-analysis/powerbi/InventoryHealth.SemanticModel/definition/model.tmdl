@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DataFolder","Store","Department","Segment","Date","Item Store","Stockouts","Weekly Sales","Reorder Points","Demand Drivers","Key Measures"]
+
+ref table Store
+ref table Department
+ref table Segment
+ref table Date
+ref table 'Item Store'
+ref table Stockouts
+ref table 'Weekly Sales'
+ref table 'Reorder Points'
+ref table 'Demand Drivers'
+ref table 'Key Measures'
+

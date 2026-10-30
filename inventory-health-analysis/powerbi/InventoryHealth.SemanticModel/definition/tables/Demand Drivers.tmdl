@@ -1,0 +1,66 @@
+/// Average sales uplift on event days and SNAP payment days, by department
+table 'Demand Drivers'
+	lineageTag: 5f816ec6-e0d0-50b1-9e33-2b2d3dba2d9c
+
+	column 'Driver type'
+		dataType: string
+		lineageTag: 75e90d30-74e1-575e-9c5e-a04b193010c0
+		summarizeBy: none
+		sourceColumn: driver_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Driver
+		dataType: string
+		lineageTag: cf6df173-9b2e-54a3-9f90-7fc8789d2f47
+		summarizeBy: none
+		sourceColumn: driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver group'
+		dataType: string
+		lineageTag: 561c5ccf-b938-51aa-8c3f-a52b3cbf94e5
+		summarizeBy: none
+		sourceColumn: driver_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_id
+		dataType: string
+		isHidden
+		lineageTag: 318838ea-4f30-5b88-b684-7d9e0586d8f2
+		summarizeBy: none
+		sourceColumn: dept_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days
+		dataType: int64
+		formatString: 0
+		lineageTag: af32164f-5366-5835-8f86-0043a3dd88ed
+		summarizeBy: none
+		sourceColumn: days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg uplift'
+		dataType: double
+		formatString: +0%;-0%;0%
+		lineageTag: 04d4d3fc-5c5c-5437-8e9d-031b23abd7d9
+		summarizeBy: none
+		sourceColumn: avg_uplift
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Demand Drivers' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, {"\", "/"}) & "\demand_drivers.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"driver_type", type text}, {"driver", type text}, {"driver_group", type text}, {"dept_id", type text}, {"days", Int64.Type}, {"avg_uplift", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

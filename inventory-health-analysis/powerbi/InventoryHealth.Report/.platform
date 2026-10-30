@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "InventoryHealth"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cdfb24bd-de69-5f9f-af3b-5c825f3f89ce"
+  }
+}

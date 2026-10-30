@@ -1,0 +1,56 @@
+relationship bb95c083-419f-5ff7-8343-b94517ec5f93
+	fromColumn: 'Item Store'.store_id
+	toColumn: Store.Store
+
+relationship b99340f2-a56e-5683-a513-237d51c2e4dc
+	fromColumn: 'Item Store'.dept_id
+	toColumn: Department.Department
+
+relationship 69576f19-89b8-5bfd-8316-fa1f94028cd3
+	fromColumn: 'Item Store'.segment
+	toColumn: Segment.Segment
+
+relationship 00e267c3-f89f-5104-ae02-fc8ae3c0b8a2
+	fromColumn: Stockouts.store_id
+	toColumn: Store.Store
+
+relationship ec0d5203-2007-5ffa-80dd-a03dbba80129
+	fromColumn: Stockouts.dept_id
+	toColumn: Department.Department
+
+relationship f0533054-4a51-5f42-a0f6-c30c06162fc5
+	fromColumn: Stockouts.segment
+	toColumn: Segment.Segment
+
+relationship 20e3c0ff-59c5-566a-b6fc-66082ed70e3d
+	fromColumn: Stockouts.'Gap start'
+	toColumn: Date.Date
+
+relationship 1bd9e6cd-9c12-5106-8d5f-ab3fb316a351
+	fromColumn: 'Weekly Sales'.store_id
+	toColumn: Store.Store
+
+relationship df29a81c-36ef-5719-bf2e-2c579fe39c94
+	fromColumn: 'Weekly Sales'.dept_id
+	toColumn: Department.Department
+
+relationship 8774bf4f-d8bc-5bb1-a70e-3b099bde83ce
+	fromColumn: 'Weekly Sales'.week_start
+	toColumn: Date.Date
+
+relationship 9e91b748-a71d-5bc7-840d-ac50c3547a12
+	fromColumn: 'Reorder Points'.store_id
+	toColumn: Store.Store
+
+relationship a9e953c6-12b9-5ecc-92e4-ae69e2c0050c
+	fromColumn: 'Reorder Points'.dept_id
+	toColumn: Department.Department
+
+relationship 13daae77-d825-5974-baad-71eed1b82ec2
+	fromColumn: 'Reorder Points'.segment
+	toColumn: Segment.Segment
+
+relationship 3dfb4be3-43a9-5022-a6be-44766e860ac7
+	fromColumn: 'Demand Drivers'.dept_id
+	toColumn: Department.Department
+

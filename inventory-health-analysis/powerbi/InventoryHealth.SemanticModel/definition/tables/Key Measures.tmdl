@@ -1,0 +1,124 @@
+/// All report measures live here
+table 'Key Measures'
+	lineageTag: 4b6e9ba5-8773-51de-be2f-acaf64f1b1c3
+
+	/// Revenue over the last 52 full weeks
+	measure 'Revenue (52w)' = SUM ( 'Item Store'[Revenue 52w] )
+		formatString: \$#,0
+		displayFolder: Sales
+		lineageTag: 6e6f1dba-7e62-5227-a4a8-7eb5cb49673c
+
+	/// Number of item-store combinations
+	measure 'Item-store lines' = COUNTROWS ( 'Item Store' )
+		formatString: #,0
+		displayFolder: Range
+		lineageTag: 5b0cfa3c-24c5-5d11-9d13-2be8cc20bf3a
+
+	/// Share of revenue, ignoring the segment filter
+	measure 'Revenue share' = DIVIDE ( [Revenue (52w)], CALCULATE ( [Revenue (52w)], ALL ( Segment ) ) )
+		formatString: 0.0%
+		displayFolder: Range
+		lineageTag: 87b6e460-6b4b-52ca-8408-d8ff9b001d6c
+
+	/// Listed lines with no sales in 26 weeks
+	measure 'Dead lines' = CALCULATE ( [Item-store lines], 'Item Store'[Stock status] = "Dead: no sales in 26 weeks" ) + 0
+		formatString: #,0
+		displayFolder: Range
+		lineageTag: 7f27cd9e-6099-5f07-8fd9-c01c3fe0a546
+
+	/// Listed lines with 2 or fewer units in 13 weeks
+	measure 'Slow lines' = CALCULATE ( [Item-store lines], 'Item Store'[Stock status] = "Slow: 2 or fewer units in 13 weeks" ) + 0
+		formatString: #,0
+		displayFolder: Range
+		lineageTag: 11386ba6-764e-5477-99d6-e372eb276d41
+
+	/// Zero-sale runs under a 1-in-100,000 chance while in stock
+	measure 'Likely stockouts' = COUNTROWS ( Stockouts ) + 0
+		formatString: #,0
+		displayFolder: Stockouts
+		lineageTag: e2e9dcdd-76ac-5f45-9026-c00e3196808a
+
+	/// Normal daily units x days out x shelf price
+	measure 'Lost revenue (est.)' = SUM ( Stockouts[Est lost revenue] ) + 0
+		formatString: \$#,0
+		displayFolder: Stockouts
+		lineageTag: 2c0ad2a2-2780-549b-a958-c7d3632a1f99
+
+	/// Normal daily units x days out
+	measure 'Lost units (est.)' = SUM ( Stockouts[Est lost units] ) + 0
+		formatString: #,0
+		displayFolder: Stockouts
+		lineageTag: 0f93e5b9-2dc5-5dc3-b680-cb2f15d4cb6c
+
+	/// Estimated lost revenue as a share of revenue
+	measure 'Lost revenue %' = DIVIDE ( [Lost revenue (est.)], [Revenue (52w)] )
+		formatString: 0.00%
+		displayFolder: Stockouts
+		lineageTag: f9b98c08-a21f-5d0c-9941-8b69e7560b49
+
+	/// Share of lost revenue from gaps that hit 3+ stores at once
+	measure 'Network gap share' = DIVIDE ( CALCULATE ( [Lost revenue (est.)], Stockouts[Network gap] = TRUE () ), [Lost revenue (est.)] )
+		formatString: 0.0%
+		displayFolder: Stockouts
+		lineageTag: 213a9af7-e9f7-58cb-bcf2-75f8adb4f374
+
+	/// Gaps still open on the last day of data
+	measure 'Out of stock now' = CALCULATE ( [Likely stockouts], Stockouts[Still open] = TRUE () )
+		formatString: #,0
+		displayFolder: Stockouts
+		lineageTag: 01d1b935-2d1b-59dc-a174-65cfaceb1683
+
+	/// Average length of a likely stockout
+	measure 'Avg days out' = AVERAGE ( Stockouts[Days out] )
+		formatString: 0.0
+		displayFolder: Stockouts
+		lineageTag: 6dc2ddfd-28ec-5890-9458-364105ee9341
+
+	/// Revenue from the weekly sales table
+	measure 'Weekly revenue' = SUM ( 'Weekly Sales'[Revenue] )
+		formatString: \$#,0
+		displayFolder: Sales
+		lineageTag: 5b4beaa3-b526-5cc7-8d7b-d21ffa2039c5
+
+	/// Last 364 days versus the 364 days before
+	measure 'Revenue growth vs prior year' =
+			VAR LastDay = MAX ( 'Date'[Date] )
+			VAR Last52 = CALCULATE ( [Weekly revenue], DATESINPERIOD ( 'Date'[Date], LastDay, -364, DAY ) )
+			VAR Prior52 = CALCULATE ( [Weekly revenue], DATESINPERIOD ( 'Date'[Date], LastDay - 364, -364, DAY ) )
+			RETURN DIVIDE ( Last52 - Prior52, Prior52 )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Sales
+		lineageTag: 84c41ca7-e1fa-540d-8172-17fc905a76b3
+
+	/// Sum of safety stock for the selected lead time
+	measure 'Safety stock (units)' = SUM ( 'Reorder Points'[Safety stock (units)] )
+		formatString: #,0.0
+		displayFolder: Reorder
+		lineageTag: 2dafcde2-4ba8-50fb-abca-c267bf77ef44
+
+	/// Sum of reorder points for the selected lead time
+	measure 'Reorder point (units)' = SUM ( 'Reorder Points'[Reorder point (units)] )
+		formatString: #,0
+		displayFolder: Reorder
+		lineageTag: 60917e1b-59e7-5c21-ac02-361d5785ae1b
+
+	/// Average uplift versus a normal same weekday
+	measure 'Avg uplift' = AVERAGE ( 'Demand Drivers'[Avg uplift] )
+		formatString: +0%;-0%;0%
+		displayFolder: Drivers
+		lineageTag: cf0758d1-4454-5af5-913f-cbdc46698ca6
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: 9c2988a2-aed0-5669-b592-77d06de1bb81
+		summarizeBy: none
+		sourceColumn: Placeholder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Key Measures' = m
+		mode: import
+		source = #table(type table [Placeholder = text], {})
+
+	annotation PBI_ResultType = Table
