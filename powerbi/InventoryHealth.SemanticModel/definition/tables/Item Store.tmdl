@@ -273,3 +273,4 @@ table 'Item Store'
 				    Typed
 
 	annotation PBI_ResultType = Table
+

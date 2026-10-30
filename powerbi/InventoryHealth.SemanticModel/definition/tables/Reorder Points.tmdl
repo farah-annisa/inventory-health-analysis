@@ -130,3 +130,4 @@ table 'Reorder Points'
 				    WithSegment
 
 	annotation PBI_ResultType = Table
+

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "lostByDept",
   "position": {
     "x": 24,
     "y": 462,
     "z": 9000,
-    "width": 400,
     "height": 238,
+    "width": 400,
     "tabOrder": 9000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Department.Department",
-              "nativeQueryRef": "Department"
+              "nativeQueryRef": "Department",
+              "active": true
             }
           ]
         },
@@ -65,8 +66,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

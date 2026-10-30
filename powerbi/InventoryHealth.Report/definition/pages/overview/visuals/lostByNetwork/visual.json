@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "lostByNetwork",
   "position": {
     "x": 440,
     "y": 462,
     "z": 10000,
-    "width": 420,
     "height": 238,
+    "width": 420,
     "tabOrder": 10000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Stockouts.Stores out together",
-              "nativeQueryRef": "Stores out together"
+              "nativeQueryRef": "Stores out together",
+              "active": true
             }
           ]
         },
@@ -65,8 +66,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

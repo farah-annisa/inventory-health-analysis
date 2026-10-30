@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "watchlist",
   "position": {
     "x": 24,
     "y": 80,
     "z": 1000,
-    "width": 820,
     "height": 330,
+    "width": 820,
     "tabOrder": 1000
   },
   "visual": {
@@ -145,8 +145,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "visualContainerObjects": {

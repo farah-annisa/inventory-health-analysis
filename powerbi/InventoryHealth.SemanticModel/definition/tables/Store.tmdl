@@ -30,3 +30,4 @@ table Store
 				    Typed
 
 	annotation PBI_ResultType = Table
+

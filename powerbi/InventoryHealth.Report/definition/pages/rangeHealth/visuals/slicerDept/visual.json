@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "slicerDept",
   "position": {
     "x": 1040,
     "y": 480,
     "z": 7000,
-    "width": 216,
     "height": 70,
+    "width": 216,
     "tabOrder": 7000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Department.Department",
-              "nativeQueryRef": "Department"
+              "nativeQueryRef": "Department",
+              "active": true
             }
           ]
         }

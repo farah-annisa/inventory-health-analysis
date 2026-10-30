@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "reorderTable",
   "position": {
     "x": 24,
     "y": 426,
     "z": 3000,
-    "width": 820,
     "height": 274,
+    "width": 820,
     "tabOrder": 3000
   },
   "visual": {
@@ -131,8 +131,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "visualContainerObjects": {

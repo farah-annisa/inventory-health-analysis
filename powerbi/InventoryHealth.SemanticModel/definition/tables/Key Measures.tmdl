@@ -122,3 +122,4 @@ table 'Key Measures'
 		source = #table(type table [Placeholder = text], {})
 
 	annotation PBI_ResultType = Table
+

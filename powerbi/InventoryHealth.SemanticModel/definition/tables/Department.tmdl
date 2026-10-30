@@ -32,3 +32,4 @@ table Department
 				    Departments
 
 	annotation PBI_ResultType = Table
+

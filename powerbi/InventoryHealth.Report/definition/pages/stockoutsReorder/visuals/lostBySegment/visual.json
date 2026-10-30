@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "lostBySegment",
   "position": {
     "x": 860,
     "y": 80,
     "z": 2000,
-    "width": 396,
     "height": 330,
+    "width": 396,
     "tabOrder": 2000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Segment.Segment",
-              "nativeQueryRef": "Segment"
+              "nativeQueryRef": "Segment",
+              "active": true
             }
           ]
         },
@@ -65,8 +66,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

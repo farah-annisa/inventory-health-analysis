@@ -89,3 +89,4 @@ table 'Weekly Sales'
 				    Typed
 
 	annotation PBI_ResultType = Table
+

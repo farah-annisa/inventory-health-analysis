@@ -1,4 +1,3 @@
-database InventoryHealth
-	compatibilityLevel: 1601
-	compatibilityMode: powerBI
+database
+	compatibilityLevel: 1606
 

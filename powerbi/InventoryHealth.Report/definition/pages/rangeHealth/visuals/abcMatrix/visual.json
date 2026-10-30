@@ -1,36 +1,18 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "abcMatrix",
   "position": {
     "x": 24,
     "y": 80,
     "z": 1000,
-    "width": 420,
     "height": 190,
+    "width": 420,
     "tabOrder": 1000
   },
   "visual": {
     "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Rows": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Segment"
-                    }
-                  },
-                  "Property": "ABC"
-                }
-              },
-              "queryRef": "Segment.ABC",
-              "nativeQueryRef": "ABC"
-            }
-          ]
-        },
         "Columns": {
           "projections": [
             {
@@ -45,7 +27,27 @@
                 }
               },
               "queryRef": "Segment.XYZ",
-              "nativeQueryRef": "XYZ"
+              "nativeQueryRef": "XYZ",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Segment"
+                    }
+                  },
+                  "Property": "ABC"
+                }
+              },
+              "queryRef": "Segment.ABC",
+              "nativeQueryRef": "ABC",
+              "active": true
             }
           ]
         },

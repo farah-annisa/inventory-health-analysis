@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "slicerStore",
   "position": {
     "x": 876,
     "y": 462,
     "z": 11000,
-    "width": 380,
     "height": 70,
+    "width": 380,
     "tabOrder": 11000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Store.Store",
-              "nativeQueryRef": "Store"
+              "nativeQueryRef": "Store",
+              "active": true
             }
           ]
         }

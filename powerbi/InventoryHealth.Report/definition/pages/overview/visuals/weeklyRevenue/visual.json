@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "weeklyRevenue",
   "position": {
     "x": 24,
     "y": 184,
     "z": 7000,
-    "width": 800,
     "height": 262,
+    "width": 800,
     "tabOrder": 7000
   },
   "visual": {
@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Date.Week start",
-              "nativeQueryRef": "Week start"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Key Measures"
-                    }
-                  },
-                  "Property": "Weekly revenue"
-                }
-              },
-              "queryRef": "Key Measures.Weekly revenue",
-              "nativeQueryRef": "Weekly revenue"
+              "nativeQueryRef": "Week start",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Department.Category",
               "nativeQueryRef": "Category"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key Measures"
+                    }
+                  },
+                  "Property": "Weekly revenue"
+                }
+              },
+              "queryRef": "Key Measures.Weekly revenue",
+              "nativeQueryRef": "Weekly revenue"
             }
           ]
         }

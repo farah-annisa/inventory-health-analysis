@@ -35,6 +35,30 @@ table Segment
 
 		annotation SummarizationSetBy = Automatic
 
+	column item_stores
+		dataType: string
+		lineageTag: 111ad0fc-bf60-4700-b3c3-6e21870edd7f
+		summarizeBy: none
+		sourceColumn: item_stores
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_52w
+		dataType: string
+		lineageTag: 37e4196e-fae2-4795-9e04-12ed24f3383b
+		summarizeBy: none
+		sourceColumn: revenue_52w
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_of_revenue
+		dataType: string
+		lineageTag: acd20400-32cc-4aba-8e08-d960fa9ae5be
+		summarizeBy: none
+		sourceColumn: pct_of_revenue
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Segment = m
 		mode: import
 		source =
@@ -46,3 +70,4 @@ table Segment
 				    Typed
 
 	annotation PBI_ResultType = Table
+

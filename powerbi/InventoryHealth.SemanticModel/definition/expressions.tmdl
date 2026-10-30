@@ -1,5 +1,5 @@
 /// Folder that holds the CSV files from data/processed. Change it in Power Query: Transform data > Manage parameters.
-expression DataFolder = "C:\inventory-health-analysis\data\processed\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression DataFolder = "C:\Users\Acer Nitro\Downloads\inventory-health-analysis\data\processed" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 4e502979-8c89-5251-bac7-2709ee867096
 
 	annotation PBI_ResultType = Text

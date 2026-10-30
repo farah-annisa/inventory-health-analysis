@@ -11,6 +11,8 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["DataFolder","Store","Department","Segment","Date","Item Store","Stockouts","Weekly Sales","Reorder Points","Demand Drivers","Key Measures"]
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table Store
 ref table Department
 ref table Segment

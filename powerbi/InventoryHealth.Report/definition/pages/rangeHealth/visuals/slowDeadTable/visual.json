@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "slowDeadTable",
   "position": {
     "x": 24,
     "y": 396,
     "z": 5000,
-    "width": 1000,
     "height": 304,
+    "width": 1000,
     "tabOrder": 5000
   },
   "visual": {
@@ -131,8 +131,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "visualContainerObjects": {

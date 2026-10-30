@@ -64,3 +64,4 @@ table 'Demand Drivers'
 				    Typed
 
 	annotation PBI_ResultType = Table
+
